@@ -7,6 +7,4 @@ public class Moin {
         System.out.println("moin2");
         System.out.println("moin");
     }
-
-
 }
