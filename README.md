@@ -1,3 +1,3 @@
 # Sicherheitskontrolle-am-Flughafen
 
-see spezifikation,pdf
+see spezifikation.pdf
