@@ -1,7 +1,9 @@
-package main;
+package main.configuration;
 
-import static main.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
-import static main.Configuration.mersenneTwister;
+import main.HandBaggage;
+
+import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
+import static main.configuration.Configuration.mersenneTwister;
 
 public class DataGenerator {
 

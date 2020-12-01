@@ -1,4 +1,6 @@
-package main;
+package main.configuration;
+
+import main.Airport;
 
 public class Application {
 

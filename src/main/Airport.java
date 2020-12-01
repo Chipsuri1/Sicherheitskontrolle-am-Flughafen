@@ -1,15 +1,19 @@
 package main;
 
+import main.employee.HouseKeeper;
+import main.employee.Technician;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.Configuration.*;
+import static main.configuration.Configuration.*;
 
 public class Airport {
 
-    private FileReader fileReader = new FileReader();
-
     private List<Passenger> passengerList = new ArrayList<Passenger>();
+
+    private Technician technician = new Technician(6, "Jason Statham", "26.07.1967");
+    private HouseKeeper houseKeeper = new HouseKeeper(7, "Jason Clarke", "17.07.1969");
 
     public Airport(){
         initPassengers();
@@ -25,5 +29,6 @@ public class Airport {
             dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
         }
     }
+
 
 }

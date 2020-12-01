@@ -1,7 +1,7 @@
 package main;
 
-import static main.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
-import static main.Configuration.mersenneTwister;
+import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
+import static main.configuration.Configuration.mersenneTwister;
 
 public class Layer {
 
