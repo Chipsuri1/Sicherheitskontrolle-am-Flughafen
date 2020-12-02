@@ -28,8 +28,8 @@ public class BaggageScanner {
     }
 
     public void scanHandBaggage(){
-        rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
-        operatingStation.getInspectorL2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
+        rollerConveyor.getInspectorI1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
+        operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
     }
 
     private void doNextStepAfterScanning(Tray tray, Record record){
@@ -37,7 +37,7 @@ public class BaggageScanner {
         {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             track1.putTray(tray);
-            manualPostControl.getInspectorL3().doManualPostControl();
+            manualPostControl.getInspectorI3().doManualPostControl();
 
         }else{
             //Gib Passagier Handbaggage zurück über Track 02
