@@ -14,6 +14,8 @@ public class OperatingStation {
         return inspectorI2;
     }
 
+
+
     public ButtonLeft getButtonLeft() {
         return buttonLeft;
     }

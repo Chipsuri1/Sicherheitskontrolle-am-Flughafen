@@ -2,6 +2,8 @@ package main.employee;
 
 import main.MagnetStripe;
 import main.ProfilType;
+import main.Record;
+import main.Result;
 import main.baggageScanner.Belt;
 import main.baggageScanner.Scanner;
 import main.baggageScanner.Tray;
@@ -14,6 +16,7 @@ import static main.Type.staff;
 public class Inspector extends Employee {
 
     private boolean isSenior;
+    private Record record;
 
     public Inspector(int id, String name, String birthDate, boolean isSenior) {
         super(id, name, birthDate);
@@ -30,7 +33,6 @@ public class Inspector extends Employee {
             Tray tray = rollerConveyor.poll();
             belt.offer(tray);
         }
-
     }
 
     public void pushButton(Button button, Scanner scanner, Belt belt){
@@ -38,7 +40,24 @@ public class Inspector extends Employee {
     }
 
     public void doManualPostControl() {
-        //TODO
+        if(record.getResult().equals(Result.knife))
+        {
+            operatingStation.getInspectorI2().tellOtherInspektor(manualPostControl.getInspectorI3(), String.valueOf(record.getResult()));
 
+        }
+        else if(record.getResult().equals(Result.weapon)){
+
+        }
+        else {
+
+        }
+
+    }
+
+    public void tellOtherInspektor(Inspector inspektor, String sentence){
+        inspektor.hearSentence(sentence);
+    }
+
+    public void hearSentence(String sentence){
     }
 }

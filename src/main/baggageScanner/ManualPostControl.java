@@ -9,4 +9,6 @@ public class ManualPostControl {
     public Inspector getInspectorI3() {
         return inspectorI3;
     }
+
+    
 }
