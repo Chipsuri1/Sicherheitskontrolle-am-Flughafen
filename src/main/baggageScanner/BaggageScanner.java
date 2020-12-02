@@ -5,6 +5,8 @@ import main.Record;
 import main.ScanResult;
 import main.Status;
 
+import java.util.Iterator;
+
 import static main.Status.shutdown;
 import static main.Status.start;
 
@@ -34,9 +36,14 @@ public class BaggageScanner {
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());
 
-        while (scanner.getTrays().size() != 0) {
-            doNextStepAfterScanning(scanner.getTrays().poll());
+        Iterator iterator = scanner.getTrays().iterator();
+
+        while(iterator.hasNext()){
+            doNextStepAfterScanning((Tray) iterator.next());
         }
+//        while (scanner.getTrays().size() != 0) {
+//            doNextStepAfterScanning(scanner.getTrays().poll());
+//        }
 
     }
 
