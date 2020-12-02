@@ -15,7 +15,7 @@ public class BaggageScanner {
     private RollerConveyor rollerConveyor = new RollerConveyor();
     private Belt belt = new Belt();
     private Supervision supervision = new Supervision();
-    private Scanner scanner = new Scanner();
+    private Scanner scanner;
 
     private Track track1 = new Track();
     private Track track2 = new Track();
