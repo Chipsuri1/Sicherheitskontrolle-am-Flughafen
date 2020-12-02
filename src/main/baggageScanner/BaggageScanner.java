@@ -10,7 +10,7 @@ import static main.Status.start;
 
 public class BaggageScanner {
 
-    private OperatingStation operatingStation = new OperatingStation();
+    private OperatingStation operatingStation;
     private ManualPostControl manualPostControl = new ManualPostControl();
     private RollerConveyor rollerConveyor = new RollerConveyor();
     private Belt belt = new Belt();
@@ -42,7 +42,7 @@ public class BaggageScanner {
 
         }else{
             //Gib Passagier Handbaggage zurück über Track 02
-
+            track2.putTray(tray);
         }
 
 
