@@ -1,5 +1,7 @@
 package main.baggageScanner;
 
+import main.Status;
+
 import java.util.PriorityQueue;
 import java.util.Queue;
 
