@@ -29,7 +29,8 @@ public class BaggageScanner {
 
     public void scanHandBaggage(){
         rollerConveyor.getInspectorI1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
-        operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
+        operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
+        operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());
     }
 
     private void doNextStepAfterScanning(Tray tray, Record record){
