@@ -4,10 +4,10 @@ import main.IDCard;
 
 public abstract class Employee {
 
-    private IDCard idCard;
-    private int id;
-    private String name;
-    private String birthDate;
+    protected IDCard idCard;
+    protected int id;
+    protected String name;
+    protected String birthDate;
 
 
     public Employee(int id, String name, String birthDate){

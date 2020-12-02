@@ -8,5 +8,6 @@ public class HouseKeeper extends Employee {
         super(id, name, birthDate);
 
         getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.K, getIdCard().getSecretKey()));
+
     }
 }

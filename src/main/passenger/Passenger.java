@@ -9,4 +9,7 @@ public class Passenger {
         this.handBaggage = handBaggage;
     }
 
+    public HandBaggage[] getHandBaggage() {
+        return handBaggage;
+    }
 }

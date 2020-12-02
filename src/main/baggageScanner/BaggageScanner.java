@@ -1,6 +1,7 @@
 package main.baggageScanner;
 
 import main.Status;
+import main.passenger.HandBaggage;
 
 import static main.Status.shutdown;
 import static main.Status.start;
@@ -16,8 +17,8 @@ public class BaggageScanner {
     private Track track1 = new Track();
     private Track track2 = new Track();
 
-    private void scanHandBaggage(){
-        
+    public void scanHandBaggage(HandBaggage[] handBaggage){
+        rollerConveyor.
     }
 
 

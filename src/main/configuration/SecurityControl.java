@@ -1,6 +1,6 @@
 package main.configuration;
 
-import main.baggageScanner.*;
+import main.baggageScanner.BaggageScanner;
 import main.employee.HouseKeeper;
 import main.employee.Technician;
 import main.passenger.HandBaggage;
@@ -14,7 +14,7 @@ import static main.configuration.Configuration.*;
 public class SecurityControl {
 
     private Queue<Passenger> passengerList = new PriorityQueue<>();
-
+    private BaggageScanner baggageScanner = new BaggageScanner();
 
     private Technician technician = new Technician(6, "Jason Statham", "26.07.1967");
     private HouseKeeper houseKeeper = new HouseKeeper(7, "Jason Clarke", "17.07.1969");
@@ -26,6 +26,9 @@ public class SecurityControl {
     private void checkPassengers(){
         for(int i = 0; i < NUMBER_OF_PASSENGERS; i++){
             Passenger passenger = passengerList.poll();
+
+            baggageScanner.scanHandBaggage(passenger.getHandBaggage());
+
         }
 
     }
