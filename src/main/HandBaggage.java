@@ -10,7 +10,6 @@ public class HandBaggage {
         }
     }
 
-
     public Layer[] getLayers() {
         return layers;
     }

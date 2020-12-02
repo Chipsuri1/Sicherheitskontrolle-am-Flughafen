@@ -8,14 +8,14 @@ import java.util.List;
 
 import static main.configuration.Configuration.*;
 
-public class Airport {
+public class SecurityControl {
 
     private List<Passenger> passengerList = new ArrayList<Passenger>();
 
     private Technician technician = new Technician(6, "Jason Statham", "26.07.1967");
     private HouseKeeper houseKeeper = new HouseKeeper(7, "Jason Clarke", "17.07.1969");
 
-    public Airport(){
+    public SecurityControl(){
         initPassengers();
     }
 

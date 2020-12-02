@@ -11,9 +11,8 @@ public class FederalPoliceOfficer extends Employee {
         super(id, name, birthDate);
 
         getIdCard().setType(external);
-        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.O));
+        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.O, getIdCard().getSecretKey()));
     }
 
-//    private Grade grade;
 
 }

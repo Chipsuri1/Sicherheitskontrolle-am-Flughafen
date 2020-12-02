@@ -12,5 +12,6 @@ public enum Configuration {
     public static MersenneTwister mersenneTwister = new MersenneTwister();
     public static DataGenerator dataGenerator = new DataGenerator();
     public static FileReader fileReader = new FileReader();
+    public static AES aes = new AES();
 
 }

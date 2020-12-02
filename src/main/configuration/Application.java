@@ -1,12 +1,12 @@
 package main.configuration;
 
-import main.Airport;
+import main.SecurityControl;
 
 public class Application {
 
 
     public static void main(String... args) {
-        Airport airport = new Airport();
+        SecurityControl airport = new SecurityControl();
     }
 
 }

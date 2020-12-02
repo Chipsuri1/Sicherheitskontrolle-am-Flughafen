@@ -14,8 +14,6 @@ public class Layer {
     private void fillLayers(){
         final String string = "abcdefghijklmnopqrstuvwxyz";
 
-
-
         for(int i = 0; i < content.length; i++){
             int randomChar = mersenneTwister.nextInt(string.length());
             content[i] = string.charAt(randomChar);

@@ -11,6 +11,6 @@ public class Technician extends Employee {
         super(id, name, birthDate);
 
         getIdCard().setType(external);
-        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.T));
+        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.T, getIdCard().getSecretKey()));
     }
 }

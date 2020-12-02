@@ -9,13 +9,15 @@ public class IDCard {
     private MagnetStripe magnetStripe;
     private boolean isLocked;
     private Type type;
+    private final String secretKey;
 
     public IDCard(){
-        id = UUID.randomUUID();
-        validUntil = "26.07.2025";
-        magnetStripe = null;
-        isLocked = false;
-        type = null;
+        this.id = UUID.randomUUID();
+        this.validUntil = "26.07.2025";
+        this.secretKey = "dhbw$20^20_";
+        this.isLocked = false;
+        this.magnetStripe = null;
+        this.type = null;
     }
 
     public void setLocked(boolean locked) {
@@ -30,4 +32,11 @@ public class IDCard {
         this.type = type;
     }
 
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public MagnetStripe getMagnetStripe() {
+        return magnetStripe;
+    }
 }

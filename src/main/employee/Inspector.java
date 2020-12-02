@@ -15,7 +15,7 @@ public class Inspector extends Employee {
         this.isSenior = isSenior;
 
         getIdCard().setType(staff);
-        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.I));
+        getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.I, getIdCard().getSecretKey()));
     }
 
 }
