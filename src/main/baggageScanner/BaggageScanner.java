@@ -1,9 +1,12 @@
 package main.baggageScanner;
 
+import main.FederalPoliceOffice;
 import main.Record;
+import main.Result;
 import main.Status;
-import main.passenger.HandBaggage;
-import main.passenger.Passenger;
+import main.configuration.SecurityControl;
+
+import javax.swing.*;
 
 import static main.Status.shutdown;
 import static main.Status.start;
@@ -16,6 +19,7 @@ public class BaggageScanner {
     private Belt belt = new Belt();
     private Supervision supervision = new Supervision();
     private Scanner scanner;
+    private FederalPoliceOffice federalPoliceOffice;
 
     private Track track1 = new Track();
     private Track track2 = new Track();
@@ -25,6 +29,7 @@ public class BaggageScanner {
     public BaggageScanner(){
         this.operatingStation = new OperatingStation(scanner, belt);
         this.scanner = new Scanner(this);
+        this.federalPoliceOffice = new FederalPoliceOffice();
     }
 
     public void scanHandBaggage(){
@@ -37,8 +42,9 @@ public class BaggageScanner {
         if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
         {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
-            track1.putTray(tray);
-            manualPostControl.getInspectorI3().doManualPostControl(this, tray.getHandBaggage().getPassenger());
+            manualPostControl.getInspectorI3().putOnTrack1(this, tray);
+            manualPostControl.getInspectorI3().doManualPostControl(this, tray);
+
 
         }else{
             //Gib Passagier Handbaggage zurück über Track 02
@@ -94,6 +100,10 @@ public class BaggageScanner {
 
     public RollerConveyor getRollerConveyor() {
         return rollerConveyor;
+    }
+
+    public FederalPoliceOffice getFederalPoliceOffice() {
+        return federalPoliceOffice;
     }
 }
 

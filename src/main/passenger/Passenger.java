@@ -4,12 +4,18 @@ public class Passenger {
 
     private String name;
     private HandBaggage[] handBaggage;
+    private boolean arrested;
 
     public Passenger(String name, HandBaggage[] handBaggage){
         this.handBaggage = handBaggage;
+        arrested = false;
     }
 
     public HandBaggage[] getHandBaggage() {
         return handBaggage;
+    }
+
+    public void setArrested(boolean arrested) {
+        this.arrested = arrested;
     }
 }
