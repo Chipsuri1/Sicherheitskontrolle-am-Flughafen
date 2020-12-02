@@ -2,14 +2,31 @@ package main.baggageScanner;
 
 import main.IDCard;
 import main.ProfilType;
+import main.Status;
 import main.configuration.Configuration;
 
 
 public class CardReader {
 
+    private BaggageScanner baggageScanner;
 
-    public boolean scanCard(IDCard idCard, String pin){
+    public CardReader(BaggageScanner baggageScanner){
+        this.baggageScanner = baggageScanner;
+    }
+
+    public void checkCard(IDCard idCard, String pin){
+        if(scan(idCard, pin)){
+            baggageScanner.setStatus(Status.activated);
+            System.out.println("Activated BaggageScanner");
+        }else {
+            baggageScanner.setStatus(Status.locked);
+            System.out.println("Locked BaggageScanner");
+        }
+    }
+
+    public boolean scan(IDCard idCard, String pin){
         if(idCard.getMagnetStripe().getProfilType().equals(ProfilType.O) || idCard.getMagnetStripe().getProfilType().equals(ProfilType.K)){
+            System.out.println("Permission denied, ProfileType equals " + idCard.getMagnetStripe().getProfilType());
             return false;
         }
 
@@ -22,6 +39,8 @@ public class CardReader {
                 amountOfTries++;
             }
         }
+
+        System.out.println("Permission denied, invalid PIN");
         return false;
     }
 }

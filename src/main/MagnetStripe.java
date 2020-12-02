@@ -10,7 +10,8 @@ public class MagnetStripe {
 
     public MagnetStripe(ProfilType profilType, String secretKey){
         this.profilType = profilType;
-        int pinInt = Configuration.instance.mersenneTwister.nextInt(1000, 9999);
+//        int pinInt = Configuration.instance.mersenneTwister.nextInt(1000, 9999);
+        int pinInt = 5000;
         this.pin = Configuration.instance.aes.encrypt(String.valueOf(pinInt), secretKey);
 
     }
