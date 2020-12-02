@@ -70,7 +70,7 @@ public class Inspector extends Employee {
                 getOfficer2().workWithRobot();
             } else {
                 //weapon
-                if (record.getResult().getScanResult().equals(ScanResult.weapon){
+                if (record.getResult().getScanResult().equals(ScanResult.weapon)){
 
                     passengerInPresence = tray.getHandBaggage().getPassenger();
                     supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
@@ -79,6 +79,9 @@ public class Inspector extends Employee {
                         getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(handBaggage);
                         getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
                     }
+                }
+                else if (record.getResult().getScanResult().equals(ScanResult.explosive)){
+
                 }
             }
         } else {
