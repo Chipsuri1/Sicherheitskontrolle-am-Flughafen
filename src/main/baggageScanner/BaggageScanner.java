@@ -13,12 +13,14 @@ public class BaggageScanner {
     private RollerConveyor rollerConveyor = new RollerConveyor();
     private Belt belt = new Belt();
     private Supervision supervision = new Supervision();
+    private Scanner scanner = new Scanner();
 
     private Track track1 = new Track();
     private Track track2 = new Track();
 
     public void scanHandBaggage(){
         rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
+        operatingStation.getInspectorL2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
     }
 
     private void doNextStepAfterScanning(Record record){

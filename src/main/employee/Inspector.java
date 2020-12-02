@@ -2,7 +2,10 @@ package main.employee;
 
 import main.MagnetStripe;
 import main.ProfilType;
+import main.baggageScanner.Belt;
+import main.baggageScanner.Scanner;
 import main.baggageScanner.Tray;
+import main.button.Button;
 
 import java.util.Queue;
 
@@ -28,6 +31,10 @@ public class Inspector extends Employee {
             belt.offer(tray);
         }
 
+    }
+
+    public void pushButton(Button button, Scanner scanner, Belt belt){
+        button.buttonAction(scanner, belt);
     }
 
 }
