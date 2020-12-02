@@ -1,17 +1,20 @@
 package main.configuration;
 
-import main.passenger.Passenger;
+import main.baggageScanner.*;
 import main.employee.HouseKeeper;
 import main.employee.Technician;
+import main.passenger.HandBaggage;
+import main.passenger.Passenger;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import static main.configuration.Configuration.*;
 
 public class SecurityControl {
 
-    private List<Passenger> passengerList = new ArrayList<Passenger>();
+    private Queue<Passenger> passengerList = new PriorityQueue<>();
+
 
     private Technician technician = new Technician(6, "Jason Statham", "26.07.1967");
     private HouseKeeper houseKeeper = new HouseKeeper(7, "Jason Clarke", "17.07.1969");
@@ -20,14 +23,24 @@ public class SecurityControl {
         initPassengers();
     }
 
+    private void checkPassengers(){
+        for(int i = 0; i < NUMBER_OF_PASSENGERS; i++){
+            Passenger passenger = passengerList.poll();
+        }
+
+    }
+
+
+
 
     private void initPassengers(){
         for(int i = 0; i < NUMBER_OF_PASSENGERS; i++){
             String[] content = fileReader.readContent(i, DATA_FILEPATH);
 
             String name = content[0];
-            int numberOfBaggage = Integer.valueOf(content[1]);
-            dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
+            HandBaggage[] handBaggage = dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
+
+            passengerList.add(new Passenger(name, handBaggage));
         }
     }
 

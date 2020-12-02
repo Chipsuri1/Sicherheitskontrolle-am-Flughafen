@@ -7,7 +7,7 @@ import static main.configuration.Configuration.mersenneTwister;
 
 public class DataGenerator {
 
-    public void generateBaggage(int numberOfBaggage, String content){
+    public HandBaggage[] generateBaggage(int numberOfBaggage, String content){
 
         HandBaggage[] handBaggage = new HandBaggage[numberOfBaggage];
 
@@ -30,5 +30,6 @@ public class DataGenerator {
             }
         }
 
+        return handBaggage;
     }
 }

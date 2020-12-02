@@ -7,13 +7,21 @@ import static main.Status.start;
 
 public class BaggageScanner {
 
-    private Tray tray;
-    private Scanner scanner;
-    private Belt belt;
-    private Supervision supervision;
-    private ManualPostControl manualPostControl;
-    private OperatingStation operatingStation;
-    private RollerConveyor rollerConveyor;
+    private OperatingStation operatingStation = new OperatingStation();
+    private ManualPostControl manualPostControl = new ManualPostControl();
+    private RollerConveyor rollerConveyor = new RollerConveyor();
+    private Belt belt = new Belt();
+    private Supervision supervision = new Supervision();
+
+    private Track track1 = new Track();
+    private Track track2 = new Track();
+
+    private void scanHandBaggage(){
+        
+    }
+
+
+
 
     private Status status = shutdown;
 
