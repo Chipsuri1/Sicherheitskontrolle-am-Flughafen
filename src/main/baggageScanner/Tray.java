@@ -1,6 +1,6 @@
 package main.baggageScanner;
 
-import main.HandBaggage;
+import main.passenger.HandBaggage;
 
 public class Tray {
     private HandBaggage handBaggage;

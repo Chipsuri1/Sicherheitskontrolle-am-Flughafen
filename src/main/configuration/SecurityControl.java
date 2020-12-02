@@ -1,5 +1,6 @@
-package main;
+package main.configuration;
 
+import main.passenger.Passenger;
 import main.employee.HouseKeeper;
 import main.employee.Technician;
 

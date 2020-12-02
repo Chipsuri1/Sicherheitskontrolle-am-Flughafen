@@ -1,7 +1,5 @@
 package main.configuration;
 
-import main.SecurityControl;
-
 public class Application {
 
 

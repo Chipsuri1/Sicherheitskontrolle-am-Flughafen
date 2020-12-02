@@ -1,6 +1,6 @@
 package main.configuration;
 
-import main.HandBaggage;
+import main.passenger.HandBaggage;
 
 import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
 import static main.configuration.Configuration.mersenneTwister;

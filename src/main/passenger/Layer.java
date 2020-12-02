@@ -1,4 +1,4 @@
-package main;
+package main.passenger;
 
 import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
 import static main.configuration.Configuration.mersenneTwister;

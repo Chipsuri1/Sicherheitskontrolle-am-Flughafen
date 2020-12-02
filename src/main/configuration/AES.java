@@ -11,20 +11,6 @@ public class AES {
     private SecretKeySpec secretKey;
     private byte[] key;
 
-    public static void main(String... args) {
-        AES AES = new AES();
-
-        final String secretKey = "dhbw$20^20_";
-
-        String plainMessage = "***I***0614***";
-        String encryptedString = AES.encrypt(plainMessage, secretKey);
-        String decryptedString = AES.decrypt(encryptedString, secretKey);
-
-        System.out.println(plainMessage);
-        System.out.println(encryptedString);
-        System.out.println(decryptedString);
-    }
-
     public String decrypt(String encryptedMessage, String key) {
         try {
             setKey(key);
