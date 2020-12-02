@@ -1,11 +1,11 @@
 package main.passenger;
 
-import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
-import static main.configuration.Configuration.mersenneTwister;
+import main.configuration.Configuration;
+
 
 public class Layer {
 
-    private char[] content = new char[NUMBER_OF_CONTENT_PER_LAYER];
+    private char[] content = new char[Configuration.instance.NUMBER_OF_CONTENT_PER_LAYER];
 
     public Layer(){
         fillLayers();
@@ -15,7 +15,7 @@ public class Layer {
         final String string = "abcdefghijklmnopqrstuvwxyz";
 
         for(int i = 0; i < content.length; i++){
-            int randomChar = mersenneTwister.nextInt(string.length());
+            int randomChar = Configuration.instance.mersenneTwister.nextInt(string.length());
             content[i] = string.charAt(randomChar);
         }
     }

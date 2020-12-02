@@ -2,8 +2,8 @@ package main.baggageScanner;
 
 import main.IDCard;
 import main.ProfilType;
+import main.configuration.Configuration;
 
-import static main.configuration.Configuration.aes;
 
 public class CardReader {
 
@@ -15,7 +15,7 @@ public class CardReader {
 
         int amountOfTries = 0;
         while (amountOfTries <=2){
-            String validPin = aes.encrypt(idCard.getMagnetStripe().getPin(), idCard.getSecretKey());
+            String validPin = Configuration.instance.aes.encrypt(idCard.getMagnetStripe().getPin(), idCard.getSecretKey());
             if(validPin.equals(pin)){
                 return true;
             }else{

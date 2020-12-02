@@ -1,7 +1,7 @@
 package main;
 
-import static main.configuration.Configuration.aes;
-import static main.configuration.Configuration.mersenneTwister;
+import main.configuration.Configuration;
+
 
 public class MagnetStripe {
 
@@ -10,8 +10,8 @@ public class MagnetStripe {
 
     public MagnetStripe(ProfilType profilType, String secretKey){
         this.profilType = profilType;
-        int pinInt = mersenneTwister.nextInt(1000, 9999);
-        this.pin = aes.decrypt(String.valueOf(pinInt), secretKey);
+        int pinInt = Configuration.instance.mersenneTwister.nextInt(1000, 9999);
+        this.pin = Configuration.instance.aes.decrypt(String.valueOf(pinInt), secretKey);
 
     }
 

@@ -6,14 +6,14 @@ import main.employee.Technician;
 import main.passenger.HandBaggage;
 import main.passenger.Passenger;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import static main.configuration.Configuration.*;
 
 public class SecurityControl {
 
-    private Queue<Passenger> passengerList = new PriorityQueue<>();
+    private Queue<Passenger> passengerList = new LinkedList<>();
     private BaggageScanner baggageScanner = new BaggageScanner();
 
     private Technician technician = new Technician(6, "Jason Statham", "26.07.1967");
@@ -24,7 +24,7 @@ public class SecurityControl {
     }
 
     private void checkPassengers(){
-        for(int i = 0; i < NUMBER_OF_PASSENGERS; i++){
+        for(int i = 0; i < Configuration.instance.NUMBER_OF_PASSENGERS; i++){
             Passenger passenger = passengerList.poll();
 
             baggageScanner.scanHandBaggage(passenger.getHandBaggage());
@@ -37,13 +37,13 @@ public class SecurityControl {
 
 
     private void initPassengers(){
-        for(int i = 0; i < NUMBER_OF_PASSENGERS; i++){
-            String[] content = fileReader.readContent(i, DATA_FILEPATH);
+        for(int i = 0; i < Configuration.instance.NUMBER_OF_PASSENGERS; i++){
+            String[] content = Configuration.instance.fileReader.readContent(i, Configuration.instance.DATA_FILEPATH);
 
             String name = content[0];
-            HandBaggage[] handBaggage = dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
+            HandBaggage[] handBaggage = Configuration.instance.dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
 
-            passengerList.add(new Passenger(name, handBaggage));
+            passengerList.offer(new Passenger(name, handBaggage));
         }
     }
 

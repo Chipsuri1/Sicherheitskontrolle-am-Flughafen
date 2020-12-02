@@ -18,7 +18,7 @@ public class BaggageScanner {
     private Track track2 = new Track();
 
     public void scanHandBaggage(HandBaggage[] handBaggage){
-        rollerConveyor.
+//        rollerConveyor.
     }
 
 

@@ -2,8 +2,6 @@ package main.configuration;
 
 import main.passenger.HandBaggage;
 
-import static main.configuration.Configuration.NUMBER_OF_CONTENT_PER_LAYER;
-import static main.configuration.Configuration.mersenneTwister;
 
 public class DataGenerator {
 
@@ -22,7 +20,7 @@ public class DataGenerator {
             for(int i = 0; i < parts.length; i++){
                 String[] strings = parts[i].split(",");
 
-                int randomPosition = mersenneTwister.nextInt(NUMBER_OF_CONTENT_PER_LAYER);
+                int randomPosition = Configuration.instance.mersenneTwister.nextInt(Configuration.instance.NUMBER_OF_CONTENT_PER_LAYER);
 
                 char prohibitedItem = strings[0].charAt(0);
 
