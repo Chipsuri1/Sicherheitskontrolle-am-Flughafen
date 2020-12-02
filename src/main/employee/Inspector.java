@@ -1,7 +1,7 @@
 package main.employee;
 
-import main.Record;
 import main.*;
+import main.Record;
 import main.baggageScanner.BaggageScanner;
 import main.baggageScanner.Tray;
 import main.button.Button;
@@ -45,18 +45,19 @@ public class Inspector extends Employee {
     }
 
     public void doManualPostControl(BaggageScanner baggageScanner, Tray tray) {
-        if (record.getResult().equals(ScanResult.knife)) {
-            baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspektor(baggageScanner.getManualPostControl().getInspectorI3(), record);
+        if (record.getResult().getScanResult().equals(ScanResult.knife)) {
+            baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspector(baggageScanner.getManualPostControl().getInspectorI3(), record);
             passengerInPresence = tray.getHandBaggage().getPassenger();
             baggageScanner.getManualPostControl().getInspectorI3().openBaggageGetKnifeAndThrowAway(tray.getHandBaggage().getPassenger());
             baggageScanner.getManualPostControl().getInspectorI3().putTrayToBelt(tray, baggageScanner);
             baggageScanner.scanHandBaggage();
             passengerInPresence = null;
-        } else if (record.getResult().equals(ScanResult.weapon) || record.getResult().equals(ScanResult.explosive)) {
+
+        } else if (record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)) {
             baggageScanner.getOperatingStation().getInspectorI2().setAlarm(baggageScanner);
             baggageScanner.getFederalPoliceOffice().getFederalPoliceOfficerO1().arrest(tray.getHandBaggage().getPassenger());
             baggageScanner.getFederalPoliceOffice().reqestOfficer1AndOfficer2(baggageScanner);
-            if (record.getResult().equals(ScanResult.explosive)) {
+            if (record.getResult().getScanResult().equals(ScanResult.explosive)) {
                 getOfficer2().workWithRobot();
             } else {
                 //weapon
@@ -68,14 +69,15 @@ public class Inspector extends Employee {
         else{
 
         }
+
     }
 
     private void setAlarm(BaggageScanner baggageScanner) {
         baggageScanner.setStatus(Status.locked);
     }
 
-    public void tellOtherInspektor(Inspector inspektor, Record record){
-        inspektor.hearSentence(record);
+    public void tellOtherInspector(Inspector inspector, Record record){
+        inspector.hearSentence(record);
     }
 
     public void hearSentence(Record record){
@@ -121,4 +123,3 @@ public class Inspector extends Employee {
         this.officer2 = officer2;
     }
 }
-

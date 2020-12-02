@@ -2,11 +2,9 @@ package main.baggageScanner;
 
 import main.FederalPoliceOffice;
 import main.Record;
-import main.Result;
+import main.ScanResult;
 import main.Status;
-import main.configuration.SecurityControl;
 
-import javax.swing.*;
 
 import static main.Status.shutdown;
 import static main.Status.start;
@@ -39,7 +37,7 @@ public class BaggageScanner {
     }
 
     private void doNextStepAfterScanning(Tray tray, Record record){
-        if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
+        if(record.getResult().getScanResult().equals(ScanResult.knife) || record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)
         {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             manualPostControl.getInspectorI3().putOnTrack1(this, tray);
