@@ -2,11 +2,8 @@ package main.baggageScanner;
 
 import main.FederalPoliceOffice;
 import main.Record;
-import main.Result;
+import main.ScanResult;
 import main.Status;
-import main.configuration.SecurityControl;
-
-import javax.swing.*;
 
 import static main.Status.shutdown;
 import static main.Status.start;
@@ -26,34 +23,33 @@ public class BaggageScanner {
 
     private Status status = shutdown;
 
-    public BaggageScanner(){
+    public BaggageScanner() {
         this.operatingStation = new OperatingStation(scanner, belt);
         this.scanner = new Scanner(this);
         this.federalPoliceOffice = new FederalPoliceOffice();
     }
 
-    public void scanHandBaggage(){
+    public void scanHandBaggage() {
         rollerConveyor.getInspectorI1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());
 
-        while (scanner.getTrays().size() != 0){
+        while (scanner.getTrays().size() != 0) {
             doNextStepAfterScanning(scanner.getTrays().poll());
         }
 
     }
 
-    private void doNextStepAfterScanning(Tray tray){
+    private void doNextStepAfterScanning(Tray tray) {
         Record record = tray.getRecord();
 
-        if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
-        {
+        if (record.getResult().equals(ScanResult.knife) || record.getResult().equals(ScanResult.weapon) || record.getResult().equals(ScanResult.explosive)) {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             manualPostControl.getInspectorI3().putOnTrack1(this, tray);
             manualPostControl.getInspectorI3().doManualPostControl(this, tray);
 
 
-        }else{
+        } else {
             //Gib Passagier Handbaggage zurück über Track 02
             track2.putTray(tray);
         }
@@ -93,11 +89,11 @@ public class BaggageScanner {
         return status;
     }
 
-    public void start(){
+    public void start() {
         setStatus(start);
     }
 
-    public void shutdown(){
+    public void shutdown() {
         setStatus(shutdown);
     }
 
