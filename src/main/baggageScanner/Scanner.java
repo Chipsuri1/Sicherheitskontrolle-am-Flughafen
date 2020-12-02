@@ -5,6 +5,7 @@ import main.Result;
 import main.ScanResult;
 import main.Status;
 import main.configuration.Configuration;
+import main.passenger.Layer;
 
 import java.util.*;
 
@@ -27,8 +28,10 @@ public class Scanner {
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            for(int j = 0; j < Configuration.instance.NUMBER_OF_CONTENT_PER_LAYER; j++){
-                stringBuilder.append(tray.getHandBaggage().getLayers()[j]);
+            for(Layer layer : tray.getHandBaggage().getLayers()){
+                for(int j = 0; j < Configuration.instance.NUMBER_OF_CONTENT_PER_LAYER; j++){
+                    stringBuilder.append(layer.getContent()[j]);
+                }
             }
 
             List<String> patterns = new ArrayList<>(Arrays.asList("K", "W", "E"));

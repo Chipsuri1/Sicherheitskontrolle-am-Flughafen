@@ -94,7 +94,7 @@ public class Inspector extends Employee {
     private void swipeTestStripe(){
         TestStripe testStripe = new TestStripe();
         testStripe.setExp();
-        putTestStripeIntoExplosiveTraceDetector();
+//        putTestStripeIntoExplosiveTraceDetector();
     }
 
     private void putTestStripeIntoExplosiveTraceDetector(TestStripe testStripe){
