@@ -17,7 +17,7 @@ public class BaggageScanner {
     private Track track2 = new Track();
 
     public void scanHandBaggage(){
-        rollerConveyor.getInspectorL1().pushHandBaggage();
+        rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
     }
 
 
@@ -36,6 +36,10 @@ public class BaggageScanner {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public RollerConveyor getRollerConveyor() {
+        return rollerConveyor;
     }
 }
 
