@@ -4,9 +4,9 @@ import main.employee.Inspector;
 
 public class ManualPostControl {
 
-    private Inspector inspectorL3 = new Inspector(3, "Bruce Willis", "19.03.1955", true);
+    private Inspector inspectorI3 = new Inspector(3, "Bruce Willis", "19.03.1955", true);
 
-    public Inspector getInspectorL3() {
-        return inspectorL3;
+    public Inspector getInspectorI3() {
+        return inspectorI3;
     }
 }
