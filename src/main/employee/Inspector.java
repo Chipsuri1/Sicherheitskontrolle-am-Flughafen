@@ -37,4 +37,8 @@ public class Inspector extends Employee {
         button.buttonAction(scanner, belt);
     }
 
+    public void doManualPostControl() {
+        //TODO
+
+    }
 }

@@ -22,4 +22,5 @@ public abstract class Employee {
     public IDCard getIdCard() {
         return idCard;
     }
+
 }
