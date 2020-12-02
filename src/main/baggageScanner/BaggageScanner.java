@@ -1,9 +1,8 @@
 package main.baggageScanner;
 
 import main.Record;
+import main.ResultScan;
 import main.Status;
-import main.passenger.HandBaggage;
-import main.passenger.Passenger;
 
 import static main.Status.shutdown;
 import static main.Status.start;
@@ -34,8 +33,7 @@ public class BaggageScanner {
     }
 
     private void doNextStepAfterScanning(Tray tray, Record record){
-        if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
-        {
+        if(record.getResult().equals("knife") || record.getResult().equals(ResultScan.weapon) || record.getResult().equals("explosive"){
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             track1.putTray(tray);
             manualPostControl.getInspectorI3().doManualPostControl(this, tray.getHandBaggage().getPassenger());

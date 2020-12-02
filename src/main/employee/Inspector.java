@@ -3,10 +3,8 @@ package main.employee;
 import main.MagnetStripe;
 import main.ProfilType;
 import main.Record;
-import main.Result;
+import main.ResultScan;
 import main.baggageScanner.BaggageScanner;
-import main.baggageScanner.Belt;
-import main.baggageScanner.Scanner;
 import main.baggageScanner.Tray;
 import main.button.Button;
 import main.passenger.Passenger;
@@ -42,12 +40,12 @@ public class Inspector extends Employee {
     }
 
     public void doManualPostControl(BaggageScanner baggageScanner, Passenger passenger) {
-        if(record.getResult().equals(Result.knife))
+        if(record.getResult().equals(ResultScan.knife))
         {
             baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspektor(baggageScanner.getManualPostControl().getInspectorI3(), record);
 
         }
-        else if(record.getResult().equals(Result.weapon)){
+        else if(record.getResult().equals(ResultScan.weapon)){
 
         }
         else {

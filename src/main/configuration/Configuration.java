@@ -11,8 +11,12 @@ public enum Configuration {
 
     public final MersenneTwister mersenneTwister = new MersenneTwister();
     public final DataGenerator dataGenerator = new DataGenerator();
-    public FileReader fileReader = new FileReader();
-    public AES aes = new AES();
+    public final FileReader fileReader = new FileReader();
+    public final AES aes = new AES();
+    public final BruteForce bruteForce = new BruteForce();
+    public final BoyerMoore boyerMoore = new BoyerMoore();
+    public final KnuthMorrisPratt knuthMorrisPratt = new KnuthMorrisPratt();
+
 
     // i/o
     public final String fileSeparator = System.getProperty("file.separator");

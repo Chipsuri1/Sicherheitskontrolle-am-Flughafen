@@ -1,5 +1,11 @@
 package main;
 
-public enum Result {
-    clean, knife, weapon, explosive
+public class Result {
+
+    ResultScan resultScan;
+    String position;
+
+    public Result(ResultScan resultScan, String position){
+
+    }
 }

@@ -1,24 +1,25 @@
 package main;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class Record {
 
-    private String id;
+    private UUID id;
     private Timestamp timeStamp;
-    private Result result;
+    private ResultScan resultScan;
 
-    public Record(String id, Result result){
-        this.id = id;
-        this.result = result;
-        timeStamp = new Timestamp(System.currentTimeMillis());
+    public Record(ResultScan resultScan){
+        this.resultScan = resultScan;
+        this.id = UUID.randomUUID();
+        this.timeStamp = new Timestamp(System.currentTimeMillis());
     }
 
-    public Result getResult() {
-        return result;
+    public ResultScan getResult() {
+        return resultScan;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 

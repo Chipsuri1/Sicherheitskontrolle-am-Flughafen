@@ -8,7 +8,7 @@ public class BruteForce implements IStringMatching {
         String pattern = "java";
         System.out.println("text    : " + text);
         System.out.println("pattern : " + pattern);
-        int position = bruteForce.search(text, pattern);
+        int position = bruteForce.searchForPattern(text, pattern);
 
         if (position == -1) {
             System.out.println("pattern not found");
@@ -17,7 +17,7 @@ public class BruteForce implements IStringMatching {
         }
     }
 
-    public int search(String text, String pattern) {
+    public int searchForPattern(String text, String pattern) {
         int n = text.length();
         int m = pattern.length();
         int j;
