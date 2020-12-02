@@ -1,7 +1,5 @@
 package main.configuration;
 
-import main.ScanResult;
-
 public class BoyerMoore implements IStringMatching {
 
     public String search(String text, String pattern){
@@ -13,20 +11,6 @@ public class BoyerMoore implements IStringMatching {
         } else {
             return String.valueOf(position);
         }
-
-
-        switch (result){
-            case "-1":
-                return "clean";
-            case "K":
-                return "prohibited item | knife detected at position " + position;
-            case "W":
-                return "prohibited item | weapon -glock7 detected at position " + position;
-            case "E":
-                return "prohibited item | explosive detected at position " + position;
-        }
-
-        return null;
     }
 
     public int searchForPattern(String text, String pattern) {

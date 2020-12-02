@@ -1,29 +1,20 @@
 package main.configuration;
 
-import main.ScanResult;
-
 public class KnuthMorrisPratt {
 
-    public ScanResult search(String text, String pattern){
+    public String search(String text, String pattern){
 
-        String result = searchForPattern(text, pattern);
+        int position = searchForPattern(text, pattern);
 
-        switch (result){
-            case "-1":
-                System.out.println("no prohibited item found");
-            case "K":
-                return ScanResult.knife;
-            case "W":
-                return ScanResult.weapon;
-            case "E":
-                return ScanResult.explosive;
+        if (position == -1) {
+            return "clean";
+        } else {
+            return String.valueOf(position);
         }
-
-        return null;
     }
 
 
-    public String searchForPattern(String text, String pattern) {
+    public int searchForPattern(String text, String pattern) {
         int n = text.length();
         int m = pattern.length();
 
@@ -34,7 +25,7 @@ public class KnuthMorrisPratt {
         while (i < n) {
             if (pattern.charAt(j) == text.charAt(i)) {
                 if (j == m - 1) {
-                    return pattern; // match
+                    return i - m + 1; // match
                 }
                 i++;
                 j++;
@@ -45,7 +36,7 @@ public class KnuthMorrisPratt {
             }
         }
 
-        return "-1";
+        return -1;
     }
 
     public int[] computeFail(String pattern) {

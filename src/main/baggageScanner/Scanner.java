@@ -1,6 +1,7 @@
 package main.baggageScanner;
 
 import main.Record;
+import main.Result;
 import main.ScanResult;
 import main.Status;
 import main.configuration.Configuration;
@@ -32,19 +33,37 @@ public class Scanner {
 
             List<String> patterns = new ArrayList<>(Arrays.asList("K", "W", "E"));
 
-            String scanResult = null;
+            String position = null;
 
             for(String pattern : patterns) {
                 switch (Configuration.instance.searchType) {
                     case BoyerMoore:
-                        scanResult = Configuration.instance.boyerMoore.search(stringBuilder.toString(), pattern);
+                        position = Configuration.instance.boyerMoore.search(stringBuilder.toString(), pattern);
                     case KnuthMorrisPratt:
-                        resultScan = Configuration.instance.knuthMorrisPratt.search(stringBuilder.toString(), pattern);
+                        position = Configuration.instance.knuthMorrisPratt.search(stringBuilder.toString(), pattern);
                 }
 
-                if(scanResult.equals())
+                if(position.equals("clean")){
+                    records.add(new Record(new Result(ScanResult.clean, position)));
+                }else{
+                    ScanResult scanResult = null;
+                    String result = null;
 
-                records.add(new Record(resultScan));
+                    switch (pattern){
+                        case "K":
+                            scanResult = ScanResult.knife;
+                            result = "knife";
+                        case "W":
+                            scanResult = ScanResult.weapon;
+                            result = "weapon - glock7";
+                        case "E":
+                            scanResult = ScanResult.explosive;
+                            result = "explosive";
+
+                    }
+                    records.add(new Record(new Result(scanResult, "prohibited item | " + result + "detected at position " + position)));
+                }
+
             }
 
         }
