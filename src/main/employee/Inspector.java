@@ -70,11 +70,15 @@ public class Inspector extends Employee {
                 getOfficer2().workWithRobot();
             } else {
                 //weapon
-                passengerInPresence = tray.getHandBaggage().getPassenger();
-                supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
-                getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
-                for (HandBaggage handBaggage : tray.getHandBaggage().getPassenger().getHandBaggage()) {
-                    getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
+                if (record.getResult().getScanResult().equals(ScanResult.weapon){
+
+                    passengerInPresence = tray.getHandBaggage().getPassenger();
+                    supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
+                    getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
+                    for (HandBaggage handBaggage : tray.getHandBaggage().getPassenger().getHandBaggage()) {
+                        getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(handBaggage);
+                        getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
+                    }
                 }
             }
         } else {

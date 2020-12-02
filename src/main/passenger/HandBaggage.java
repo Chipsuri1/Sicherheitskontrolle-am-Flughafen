@@ -1,8 +1,11 @@
 package main.passenger;
 
+import main.baggageScanner.Tray;
+
 public class HandBaggage {
 
     private Passenger passenger = null;
+    private Tray tray;
     private Layer[] layers = new Layer[5];
 
     public HandBaggage(){
@@ -23,4 +26,7 @@ public class HandBaggage {
         this.passenger = passenger;
     }
 
+    public void setTray(Tray tray) {
+        this.tray = tray;
+    }
 }
