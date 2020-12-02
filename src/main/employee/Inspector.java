@@ -1,7 +1,7 @@
 package main.employee;
 
-import main.*;
 import main.Record;
+import main.*;
 import main.baggageScanner.BaggageScanner;
 import main.baggageScanner.Tray;
 import main.button.Button;
@@ -88,6 +88,16 @@ public class Inspector extends Employee {
 
         }
 
+
+    }
+
+    private void swipeTestStripe(){
+        TestStripe testStripe = new TestStripe();
+        testStripe.setExp();
+        putTestStripeIntoExplosiveTraceDetector();
+    }
+
+    private void putTestStripeIntoExplosiveTraceDetector(TestStripe testStripe){
 
     }
 
