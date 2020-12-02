@@ -6,15 +6,21 @@ import main.ProfilType;
 import main.Robot;
 import main.baggageScanner.Tray;
 import main.configuration.Configuration;
+import main.passenger.HandBaggage;
+import main.passenger.Layer;
 import main.passenger.Passenger;
 
 import java.awt.*;
+import java.util.List;
 
 import static main.Type.external;
 
 public class FederalPoliceOfficer extends Employee {
 
     private FederalPoliceOffice federalPoliceOffice;
+    private char thing;
+    private List<HandBaggage> baggagesOfArrested;
+
 
     public FederalPoliceOfficer(int id, String name, String birthDate, FederalPoliceOffice federalPoliceOffice) {
         super(id, name, birthDate);
@@ -35,6 +41,26 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     public void openHandBaggageGetWeaponAndGiveToOfficer03(Tray tray) {
+        for (Layer layer : tray.getHandBaggage().getLayers()) {
+            for (int i = 0; i < layer.getContent().length; i++) {
+                if (layer.getContent()[i] == 'W'){
+                    federalPoliceOffice.getFederalPoliceOfficerO3().setThing(layer.getContent()[i]);
+                    layer.getContent()[i] = 'A';
+                }
+            }
+        }
 
+    }
+
+    public void setThing(char thing) {
+        this.thing = thing;
+    }
+
+    public List<HandBaggage> getBaggagesOfArrested() {
+        return baggagesOfArrested;
+    }
+
+    public FederalPoliceOffice getFederalPoliceOffice() {
+        return federalPoliceOffice;
     }
 }
