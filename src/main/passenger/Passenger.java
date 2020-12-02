@@ -8,6 +8,7 @@ public class Passenger {
 
     public Passenger(String name, HandBaggage[] handBaggage){
         this.handBaggage = handBaggage;
+        this.name = name;
         arrested = false;
     }
 

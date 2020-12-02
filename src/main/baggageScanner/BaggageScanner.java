@@ -24,8 +24,8 @@ public class BaggageScanner {
     private Status status = shutdown;
 
     public BaggageScanner() {
-        this.operatingStation = new OperatingStation(scanner, belt, this);
         this.scanner = new Scanner(this);
+        this.operatingStation = new OperatingStation(scanner, belt, this);
         this.federalPoliceOffice = new FederalPoliceOffice();
     }
 
