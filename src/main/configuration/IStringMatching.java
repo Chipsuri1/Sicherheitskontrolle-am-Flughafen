@@ -1,5 +1,5 @@
 package main.configuration;
 
 public interface IStringMatching {
-    String search(String text, String pattern);
+    String searchForPattern(String text, String pattern);
 }
