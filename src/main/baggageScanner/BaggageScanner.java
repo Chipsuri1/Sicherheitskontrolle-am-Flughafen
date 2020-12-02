@@ -18,6 +18,8 @@ public class BaggageScanner {
     private Track track1 = new Track();
     private Track track2 = new Track();
 
+    private Status status = shutdown;
+
     public void scanHandBaggage(){
         rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
         operatingStation.getInspectorL2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
@@ -39,8 +41,6 @@ public class BaggageScanner {
 
 
 
-    private Status status = shutdown;
-
     public void start(){
         setStatus(start);
     }
@@ -48,7 +48,6 @@ public class BaggageScanner {
     public void shutdown(){
         setStatus(shutdown);
     }
-
 
     public void setStatus(Status status) {
         this.status = status;
