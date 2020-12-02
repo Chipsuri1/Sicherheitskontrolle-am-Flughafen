@@ -38,7 +38,7 @@ public class BaggageScanner {
         {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             track1.putTray(tray);
-            manualPostControl.getInspectorI3().doManualPostControl();
+            manualPostControl.getInspectorI3().doManualPostControl(this, tray.getHandBaggage().getPassenger());
 
         }else{
             //Gib Passagier Handbaggage zurück über Track 02
@@ -48,7 +48,37 @@ public class BaggageScanner {
 
     }
 
+    public OperatingStation getOperatingStation() {
+        return operatingStation;
+    }
 
+    public ManualPostControl getManualPostControl() {
+        return manualPostControl;
+    }
+
+    public Belt getBelt() {
+        return belt;
+    }
+
+    public Supervision getSupervision() {
+        return supervision;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public Track getTrack1() {
+        return track1;
+    }
+
+    public Track getTrack2() {
+        return track2;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 
     public void start(){
         setStatus(start);

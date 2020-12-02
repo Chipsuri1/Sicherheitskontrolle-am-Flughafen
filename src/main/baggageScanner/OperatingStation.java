@@ -31,4 +31,6 @@ public class OperatingStation {
     public ButtonRectangle getButtonRectangle() {
         return buttonRectangle;
     }
+
+
 }

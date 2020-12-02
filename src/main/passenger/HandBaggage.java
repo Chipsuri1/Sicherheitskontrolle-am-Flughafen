@@ -14,4 +14,8 @@ public class HandBaggage {
     public Layer[] getLayers() {
         return layers;
     }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
 }

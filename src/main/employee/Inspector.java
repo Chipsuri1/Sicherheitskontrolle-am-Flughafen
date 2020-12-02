@@ -4,10 +4,12 @@ import main.MagnetStripe;
 import main.ProfilType;
 import main.Record;
 import main.Result;
+import main.baggageScanner.BaggageScanner;
 import main.baggageScanner.Belt;
 import main.baggageScanner.Scanner;
 import main.baggageScanner.Tray;
 import main.button.Button;
+import main.passenger.Passenger;
 
 import java.util.Queue;
 
@@ -39,10 +41,10 @@ public class Inspector extends Employee {
         button.buttonAction();
     }
 
-    public void doManualPostControl() {
+    public void doManualPostControl(BaggageScanner baggageScanner, Passenger passenger) {
         if(record.getResult().equals(Result.knife))
         {
-            operatingStation.getInspectorI2().tellOtherInspektor(manualPostControl.getInspectorI3(), String.valueOf(record.getResult()));
+            baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspektor(baggageScanner.getManualPostControl().getInspectorI3(), record);
 
         }
         else if(record.getResult().equals(Result.weapon)){
@@ -54,10 +56,11 @@ public class Inspector extends Employee {
 
     }
 
-    public void tellOtherInspektor(Inspector inspektor, String sentence){
-        inspektor.hearSentence(sentence);
+    public void tellOtherInspektor(Inspector inspektor, Record record){
+        inspektor.hearSentence(record);
     }
 
-    public void hearSentence(String sentence){
+    public void hearSentence(Record record){
+        this.record = record;
     }
 }
