@@ -23,7 +23,7 @@ public class Scanner {
 
         int size = trays.size();
         for(int i = 0; i < size; i++){
-            Tray tray = trays.poll();
+            Tray tray = trays.peek();
 
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -43,8 +43,10 @@ public class Scanner {
                         position = Configuration.instance.knuthMorrisPratt.search(stringBuilder.toString(), pattern);
                 }
 
+                Record record = null;
+
                 if(position.equals("clean")){
-                    records.add(new Record(new Result(ScanResult.clean, position)));
+                    record = new Record(new Result(ScanResult.clean, position));
                 }else{
                     ScanResult scanResult = null;
                     String result = null;
@@ -59,19 +61,22 @@ public class Scanner {
                         case "E":
                             scanResult = ScanResult.explosive;
                             result = "explosive";
-
                     }
-                    records.add(new Record(new Result(scanResult, "prohibited item | " + result + "detected at position " + position)));
+                    record = new Record(new Result(scanResult, "prohibited item | " + result + "detected at position " + position));
                 }
 
+                records.add(record);
+                tray.setRecord(record);
+
             }
-
         }
-
 
         baggageScanner.setStatus(Status.activated);
     }
 
+    public Queue<Record> getRecords() {
+        return records;
+    }
 
     public Queue<Tray> getTrays() {
         return trays;

@@ -36,9 +36,16 @@ public class BaggageScanner {
         rollerConveyor.getInspectorI1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());
+
+        while (scanner.getTrays().size() != 0){
+            doNextStepAfterScanning(scanner.getTrays().poll());
+        }
+
     }
 
-    private void doNextStepAfterScanning(Tray tray, Record record){
+    private void doNextStepAfterScanning(Tray tray){
+        Record record = tray.getRecord();
+
         if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
         {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01

@@ -1,9 +1,11 @@
 package main.baggageScanner;
 
+import main.Record;
 import main.passenger.HandBaggage;
 
 public class Tray {
     private HandBaggage handBaggage;
+    private Record record;
 
     public Tray(HandBaggage handBaggage){
         this.handBaggage = handBaggage;
@@ -11,5 +13,13 @@ public class Tray {
 
     public HandBaggage getHandBaggage() {
         return handBaggage;
+    }
+
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
     }
 }
