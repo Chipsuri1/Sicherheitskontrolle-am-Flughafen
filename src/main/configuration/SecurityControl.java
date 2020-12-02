@@ -24,17 +24,18 @@ public class SecurityControl {
         initPassengers();
     }
 
-    private void checkPassengers(){
+    public void checkPassengers(){
+        baggageScanner.getOperatingStation().getCardReader().checkCard(baggageScanner.getOperatingStation().getInspectorI2().swipeCard(), "5000");
         for(int i = 0; i < Configuration.instance.NUMBER_OF_PASSENGERS; i++){
             Passenger passenger = passengerList.poll();
-
+            System.out.println("It´s "+ passenger.getName()+" turn, he puts his handbaggage in a tray!");
             for(int j = 0; j < passenger.getHandBaggage().length; j++){
                 Tray tray = new Tray((passenger.getHandBaggage()[j]));
                 passenger.getHandBaggage()[j].setTray(tray);
-                baggageScanner.getRollerConveyor().getTrays().add(new Tray(passenger.getHandBaggage()[j]));
+                baggageScanner.getRollerConveyor().getTrays().add(tray);
                 passenger.getHandBaggage()[j] = null;
             }
-
+            System.out.println("Now his Handbaggages get scanned!");
             baggageScanner.scanHandBaggage();
 
         }

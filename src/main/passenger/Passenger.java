@@ -18,4 +18,8 @@ public class Passenger {
     public void setArrested(boolean arrested) {
         this.arrested = arrested;
     }
+
+    public String getName() {
+        return name;
+    }
 }
