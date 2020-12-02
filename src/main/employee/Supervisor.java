@@ -19,4 +19,6 @@ public class Supervisor extends Employee {
         getIdCard().setType(staff);
         getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.S, getIdCard().getSecretKey()));
     }
+
+
 }

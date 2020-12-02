@@ -9,6 +9,7 @@ import main.passenger.HandBaggage;
 import main.passenger.Layer;
 import main.passenger.Passenger;
 
+import java.util.List;
 import java.util.Queue;
 
 import static main.Type.staff;
@@ -45,6 +46,8 @@ public class Inspector extends Employee {
     }
 
     public void doManualPostControl(BaggageScanner baggageScanner, Tray tray) {
+
+        //Knife
         if (record.getResult().getScanResult().equals(ScanResult.knife)) {
             baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspector(baggageScanner.getManualPostControl().getInspectorI3(), record);
             passengerInPresence = tray.getHandBaggage().getPassenger();
@@ -53,7 +56,9 @@ public class Inspector extends Employee {
             baggageScanner.scanHandBaggage();
             passengerInPresence = null;
 
-        } else if (record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)) {
+        }
+        //Weapon or Explosive
+        else if (record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)) {
             baggageScanner.getOperatingStation().getInspectorI2().setAlarm(baggageScanner);
             baggageScanner.getFederalPoliceOffice().getFederalPoliceOfficerO1().arrest(tray.getHandBaggage().getPassenger());
             baggageScanner.getFederalPoliceOffice().reqestOfficer1AndOfficer2(baggageScanner);
@@ -61,14 +66,17 @@ public class Inspector extends Employee {
                 getOfficer2().workWithRobot();
             } else {
                 //weapon
+                passengerInPresence = tray.getHandBaggage().getPassenger();
+                supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
                 getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
+                for (HandBaggage handBaggage : tray.getHandBaggage().getPassenger().getHandBaggage()) {
+                    getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
+                }
             }
         } else {
 
         }
-        else{
 
-        }
 
     }
 

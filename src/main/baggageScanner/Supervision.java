@@ -11,4 +11,7 @@ public class Supervision {
         baggageScanner.setStatus(Status.activated);
     }
 
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
 }
