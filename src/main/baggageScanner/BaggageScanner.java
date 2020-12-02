@@ -24,12 +24,13 @@ public class BaggageScanner {
     private Status status = shutdown;
 
     public BaggageScanner() {
-        this.operatingStation = new OperatingStation(scanner, belt);
+        this.operatingStation = new OperatingStation(scanner, belt, this);
         this.scanner = new Scanner(this);
         this.federalPoliceOffice = new FederalPoliceOffice();
     }
 
     public void scanHandBaggage() {
+        operatingStation.getCardReader().checkCard(operatingStation.getInspectorI2().swipeCard(), "5000");
         rollerConveyor.getInspectorI1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());

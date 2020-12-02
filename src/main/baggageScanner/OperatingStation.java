@@ -12,9 +12,10 @@ public class OperatingStation {
     private ButtonLeft buttonLeft;
     private ButtonRectangle buttonRectangle;
 
-    public OperatingStation(Scanner scanner, Belt belt){
+    public OperatingStation(Scanner scanner, Belt belt, BaggageScanner baggageScanner){
         buttonLeft = new ButtonLeft(scanner, belt);
         buttonRectangle = new ButtonRectangle(scanner);
+        cardReader = new CardReader(baggageScanner);
     }
 
 
@@ -23,6 +24,9 @@ public class OperatingStation {
     }
 
 
+    public CardReader getCardReader() {
+        return cardReader;
+    }
 
     public ButtonLeft getButtonLeft() {
         return buttonLeft;

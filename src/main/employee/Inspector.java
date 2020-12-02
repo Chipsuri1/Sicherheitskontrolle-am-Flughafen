@@ -32,6 +32,10 @@ public class Inspector extends Employee {
         getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.I, getIdCard().getSecretKey()));
     }
 
+    public IDCard swipeCard(){
+        return getIdCard();
+    }
+
     public void pushHandBaggage(Queue<Tray> rollerConveyor , Queue<Tray> belt){
         int sizeOfRollerConveyor = rollerConveyor.size();
         for(int i = 0; i < sizeOfRollerConveyor; i++){
