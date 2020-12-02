@@ -18,4 +18,8 @@ public class HandBaggage {
     public Passenger getPassenger() {
         return passenger;
     }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
 }

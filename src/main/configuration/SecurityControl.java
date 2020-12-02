@@ -7,6 +7,7 @@ import main.employee.Technician;
 import main.passenger.HandBaggage;
 import main.passenger.Passenger;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -47,8 +48,9 @@ public class SecurityControl {
 
             String name = content[0];
             HandBaggage[] handBaggage = Configuration.instance.dataGenerator.generateBaggage(Integer.valueOf(content[1]), content[2]);
-
-            passengerList.offer(new Passenger(name, handBaggage));
+            Passenger passenger = new Passenger(name, handBaggage);
+            Arrays.stream(handBaggage).forEach(handBaggage1 -> handBaggage1.setPassenger(passenger));
+            passengerList.offer(passenger);
         }
     }
 
