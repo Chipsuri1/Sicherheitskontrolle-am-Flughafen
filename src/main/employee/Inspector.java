@@ -9,7 +9,6 @@ import main.passenger.HandBaggage;
 import main.passenger.Layer;
 import main.passenger.Passenger;
 
-import java.util.List;
 import java.util.Queue;
 
 import static main.Type.staff;
@@ -79,6 +78,7 @@ public class Inspector extends Employee {
                         getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(handBaggage.getTray());
                         getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
                     }
+
                 }
                 else if (record.getResult().getScanResult().equals(ScanResult.explosive)){
 
