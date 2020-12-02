@@ -1,6 +1,7 @@
 package main.baggageScanner;
 
 import main.Status;
+import main.configuration.Configuration;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -16,6 +17,13 @@ public class Scanner {
 
     public void startScanning(){
         baggageScanner.setStatus(Status.inUse);
+        switch (Configuration.instance.searchType){
+            case BoyerMoore:
+
+        }
+
+
+        baggageScanner.setStatus(Status.activated);
     }
 
 

@@ -22,4 +22,8 @@ public class HandBaggage {
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
     }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
 }

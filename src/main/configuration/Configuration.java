@@ -3,6 +3,8 @@ package main.configuration;
 public enum Configuration {
     instance;
 
+    public SearchType searchType = SearchType.BoyerMoore;
+
     public final int NUMBER_OF_PASSENGERS = 568;
     public final int NUMBER_OF_BAGGAGE = 609;
     public final int NUMBER_OF_CONTENT_PER_LAYER = 10000;
