@@ -20,6 +20,7 @@ public class FederalPoliceOfficer extends Employee {
     private FederalPoliceOffice federalPoliceOffice;
     private char thing;
     private List<HandBaggage> baggagesOfArrested;
+    private Passenger passenger;
 
 
     public FederalPoliceOfficer(int id, String name, String birthDate, FederalPoliceOffice federalPoliceOffice) {
@@ -62,5 +63,9 @@ public class FederalPoliceOfficer extends Employee {
 
     public FederalPoliceOffice getFederalPoliceOffice() {
         return federalPoliceOffice;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 }

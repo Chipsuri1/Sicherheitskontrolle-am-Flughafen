@@ -24,14 +24,14 @@ public class SecurityControl {
         initPassengers();
     }
 
-    private void checkPassengers(){
+    public void checkPassengers(){
         for(int i = 0; i < Configuration.instance.NUMBER_OF_PASSENGERS; i++){
             Passenger passenger = passengerList.poll();
 
             for(int j = 0; j < passenger.getHandBaggage().length; j++){
                 Tray tray = new Tray((passenger.getHandBaggage()[j]));
                 passenger.getHandBaggage()[j].setTray(tray);
-                baggageScanner.getRollerConveyor().getTrays().add(new Tray(passenger.getHandBaggage()[j]));
+                baggageScanner.getRollerConveyor().getTrays().add(tray);
                 passenger.getHandBaggage()[j] = null;
             }
 
