@@ -2,10 +2,10 @@ package main;
 
 public class Result {
 
-    ResultScan resultScan;
+    ScanResult resultScan;
     String position;
 
-    public Result(ResultScan resultScan, String position){
+    public Result(ScanResult resultScan, String position){
 
     }
 }

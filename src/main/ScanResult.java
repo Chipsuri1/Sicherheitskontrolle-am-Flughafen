@@ -1,5 +1,5 @@
 package main;
 
-public enum ResultScan {
+public enum ScanResult {
     clean, knife, weapon, explosive
 }

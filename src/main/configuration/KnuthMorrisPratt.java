@@ -1,10 +1,10 @@
 package main.configuration;
 
-import main.ResultScan;
+import main.ScanResult;
 
 public class KnuthMorrisPratt {
 
-    public ResultScan search(String text, String pattern){
+    public ScanResult search(String text, String pattern){
 
         String result = searchForPattern(text, pattern);
 
@@ -12,11 +12,11 @@ public class KnuthMorrisPratt {
             case "-1":
                 System.out.println("no prohibited item found");
             case "K":
-                return ResultScan.knife;
+                return ScanResult.knife;
             case "W":
-                return ResultScan.weapon;
+                return ScanResult.weapon;
             case "E":
-                return ResultScan.explosive;
+                return ScanResult.explosive;
         }
 
         return null;

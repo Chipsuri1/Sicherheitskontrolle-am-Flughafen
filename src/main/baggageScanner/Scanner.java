@@ -1,7 +1,7 @@
 package main.baggageScanner;
 
 import main.Record;
-import main.ResultScan;
+import main.ScanResult;
 import main.Status;
 import main.configuration.Configuration;
 
@@ -32,7 +32,7 @@ public class Scanner {
 
             List<String> patterns = new ArrayList<>(Arrays.asList("K", "W", "E"));
 
-            ResultScan resultScan = null;
+            ScanResult resultScan = null;
 
             for(String pattern : patterns) {
                 switch (Configuration.instance.searchType) {

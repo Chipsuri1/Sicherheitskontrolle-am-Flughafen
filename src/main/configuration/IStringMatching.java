@@ -1,7 +1,7 @@
 package main.configuration;
 
-import main.ResultScan;
+import main.ScanResult;
 
 public interface IStringMatching {
-    ResultScan search(String text, String pattern);
+    ScanResult search(String text, String pattern);
 }
