@@ -29,4 +29,8 @@ public class HandBaggage {
     public void setTray(Tray tray) {
         this.tray = tray;
     }
+
+    public Tray getTray() {
+        return tray;
+    }
 }

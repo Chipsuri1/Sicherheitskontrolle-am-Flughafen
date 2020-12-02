@@ -76,7 +76,7 @@ public class Inspector extends Employee {
                     supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
                     getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
                     for (HandBaggage handBaggage : tray.getHandBaggage().getPassenger().getHandBaggage()) {
-                        getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(handBaggage);
+                        getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(handBaggage.getTray());
                         getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
                     }
                 }

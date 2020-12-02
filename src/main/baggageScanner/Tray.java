@@ -22,4 +22,8 @@ public class Tray {
     public void setRecord(Record record) {
         this.record = record;
     }
+
+    public void setHandBaggage(HandBaggage handBaggage) {
+        this.handBaggage = handBaggage;
+    }
 }

@@ -29,6 +29,8 @@ public class SecurityControl {
             Passenger passenger = passengerList.poll();
 
             for(int j = 0; j < passenger.getHandBaggage().length; j++){
+                Tray tray = new Tray((passenger.getHandBaggage()[j]));
+                passenger.getHandBaggage()[j].setTray(tray);
                 baggageScanner.getRollerConveyor().getTrays().add(new Tray(passenger.getHandBaggage()[j]));
                 passenger.getHandBaggage()[j] = null;
             }
