@@ -3,6 +3,7 @@ package main;
 import main.baggageScanner.BaggageScanner;
 import main.employee.FederalPoliceOfficer;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class FederalPoliceOffice {
@@ -15,8 +16,10 @@ public class FederalPoliceOffice {
         federalPoliceOfficerO1 = new FederalPoliceOfficer(5, "Wesley Snipes", "31.07.1962", this);
         federalPoliceOfficerO2 = new FederalPoliceOfficer(8, "Toto", "01.01.1969", this);
         federalPoliceOfficerO3 = new FederalPoliceOfficer(9, "Harry", "01.01.1969", this);
-
-        robots.add(new Robot());
+        robots = new LinkedList<>();
+        for (int i = 0; i < 3; i++) {
+            robots.add(new Robot());
+        }
     }
 
     public FederalPoliceOfficer getFederalPoliceOfficerO1() {
