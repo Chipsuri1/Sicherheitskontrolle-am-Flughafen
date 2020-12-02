@@ -20,6 +20,9 @@ public class BaggageScanner {
         rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
     }
 
+    private void doNextStepAfterScanning(String ){
+
+    }
 
 
 
