@@ -15,7 +15,7 @@ public class CardReader {
 
         int amountOfTries = 0;
         while (amountOfTries <=2){
-            String validPin = Configuration.instance.aes.encrypt(idCard.getMagnetStripe().getPin(), idCard.getSecretKey());
+            String validPin = Configuration.instance.aes.decrypt(idCard.getMagnetStripe().getPin(), idCard.getSecretKey());
             if(validPin.equals(pin)){
                 return true;
             }else{

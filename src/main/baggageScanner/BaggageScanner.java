@@ -1,5 +1,6 @@
 package main.baggageScanner;
 
+import main.Record;
 import main.Status;
 
 import static main.Status.shutdown;
@@ -20,7 +21,17 @@ public class BaggageScanner {
         rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
     }
 
-    private void doNextStepAfterScanning(String ){
+    private void doNextStepAfterScanning(Record record){
+        if(record.getResult().equals("knife") || record.getResult().equals("weapon") || record.getResult().equals("explosive")
+        {
+            //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
+            manualPostControl.
+
+        }else{
+            //Gib Passagier Handbaggage zurück über Track 02
+
+        }
+
 
     }
 
