@@ -15,7 +15,7 @@ public class Record {
         this.timeStamp = new Timestamp(System.currentTimeMillis());
     }
 
-    public Result getResult() {
+       public Result getResult() {
         return result;
     }
 
