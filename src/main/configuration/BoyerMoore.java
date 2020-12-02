@@ -4,19 +4,26 @@ import main.ScanResult;
 
 public class BoyerMoore implements IStringMatching {
 
-    public ScanResult search(String text, String pattern){
+    public String search(String text, String pattern){
 
-        String result = searchForPattern(text, pattern);
+        int position = searchForPattern(text, pattern);
+
+        if (position == -1) {
+            return "clean";
+        } else {
+            return String.valueOf(position);
+        }
+
 
         switch (result){
             case "-1":
-                System.out.println("no prohibited item found");
+                return "clean";
             case "K":
-                return ScanResult.knife;
+                return "prohibited item | knife detected at position " + position;
             case "W":
-                return ScanResult.weapon;
+                return "prohibited item | weapon -glock7 detected at position " + position;
             case "E":
-                return ScanResult.explosive;
+                return "prohibited item | explosive detected at position " + position;
         }
 
         return null;

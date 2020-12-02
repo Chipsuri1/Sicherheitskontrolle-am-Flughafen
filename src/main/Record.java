@@ -7,16 +7,16 @@ public class Record {
 
     private UUID id;
     private Timestamp timeStamp;
-    private ScanResult resultScan;
+    private Result result;
 
-    public Record(ScanResult resultScan){
-        this.resultScan = resultScan;
+    public Record(Result result){
+        this.result = result;
         this.id = UUID.randomUUID();
         this.timeStamp = new Timestamp(System.currentTimeMillis());
     }
 
-    public ScanResult getResult() {
-        return resultScan;
+    public Result getResult() {
+        return result;
     }
 
     public UUID getId() {

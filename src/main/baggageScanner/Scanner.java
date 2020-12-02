@@ -32,15 +32,17 @@ public class Scanner {
 
             List<String> patterns = new ArrayList<>(Arrays.asList("K", "W", "E"));
 
-            ScanResult resultScan = null;
+            String scanResult = null;
 
             for(String pattern : patterns) {
                 switch (Configuration.instance.searchType) {
                     case BoyerMoore:
-                        resultScan = Configuration.instance.boyerMoore.search(stringBuilder.toString(), pattern);
+                        scanResult = Configuration.instance.boyerMoore.search(stringBuilder.toString(), pattern);
                     case KnuthMorrisPratt:
                         resultScan = Configuration.instance.knuthMorrisPratt.search(stringBuilder.toString(), pattern);
                 }
+
+                if(scanResult.equals())
 
                 records.add(new Record(resultScan));
             }
