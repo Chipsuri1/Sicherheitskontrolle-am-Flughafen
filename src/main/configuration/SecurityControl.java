@@ -1,6 +1,7 @@
 package main.configuration;
 
 import main.baggageScanner.BaggageScanner;
+import main.baggageScanner.Tray;
 import main.employee.HouseKeeper;
 import main.employee.Technician;
 import main.passenger.HandBaggage;
@@ -27,7 +28,11 @@ public class SecurityControl {
         for(int i = 0; i < Configuration.instance.NUMBER_OF_PASSENGERS; i++){
             Passenger passenger = passengerList.poll();
 
-            baggageScanner.scanHandBaggage(passenger.getHandBaggage());
+            for(int j = 0; j < passenger.getHandBaggage().length; j++){
+                baggageScanner.getRollerConveyor().getTrays().add(new Tray(passenger.getHandBaggage()[j]));
+            }
+
+            baggageScanner.scanHandBaggage();
 
         }
 

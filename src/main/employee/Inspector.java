@@ -18,4 +18,8 @@ public class Inspector extends Employee {
         getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.I, getIdCard().getSecretKey()));
     }
 
+    public void pushHandBaggage(){
+
+    }
+
 }
