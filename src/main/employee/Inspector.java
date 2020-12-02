@@ -35,8 +35,8 @@ public class Inspector extends Employee {
         }
     }
 
-    public void pushButton(Button button, Scanner scanner, Belt belt){
-        button.buttonAction(scanner, belt);
+    public void pushButton(Button button){
+        button.buttonAction();
     }
 
     public void doManualPostControl() {
