@@ -10,21 +10,27 @@ import static main.Status.start;
 
 public class BaggageScanner {
 
-    private OperatingStation operatingStation = new OperatingStation();
+    private OperatingStation operatingStation;
     private ManualPostControl manualPostControl = new ManualPostControl();
     private RollerConveyor rollerConveyor = new RollerConveyor();
     private Belt belt = new Belt();
     private Supervision supervision = new Supervision();
-    private Scanner scanner = new Scanner();
+    private Scanner scanner;
 
     private Track track1 = new Track();
     private Track track2 = new Track();
 
     private Status status = shutdown;
 
+    public BaggageScanner(){
+        this.operatingStation = new OperatingStation(scanner, belt);
+        this.scanner = new Scanner(this);
+    }
+
     public void scanHandBaggage(){
         rollerConveyor.getInspectorL1().pushHandBaggage(rollerConveyor.getTrays(), belt.getTrays());
-        operatingStation.getInspectorL2().pushButton(operatingStation.getButtonLeft(), scanner, belt);
+        operatingStation.getInspectorL2().pushButton(operatingStation.getButtonLeft());
+        operatingStation.getInspectorL2().pushButton(operatingStation.getButtonRectangle());
     }
 
     private void doNextStepAfterScanning(Tray tray, Record record){

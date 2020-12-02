@@ -8,7 +8,6 @@ import main.passenger.HandBaggage;
 import main.passenger.Passenger;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 
@@ -30,6 +29,7 @@ public class SecurityControl {
 
             for(int j = 0; j < passenger.getHandBaggage().length; j++){
                 baggageScanner.getRollerConveyor().getTrays().add(new Tray(passenger.getHandBaggage()[j]));
+                passenger.getHandBaggage()[j] = null;
             }
 
             baggageScanner.scanHandBaggage();
