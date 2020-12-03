@@ -8,6 +8,7 @@ public enum Configuration {
     public final int NUMBER_OF_PASSENGERS = 568;
     public final int NUMBER_OF_BAGGAGE = 609;
     public final int NUMBER_OF_CONTENT_PER_LAYER = 10000;
+    public final boolean commentsOn = false;
 
     public final MersenneTwister mersenneTwister = new MersenneTwister();
     public final DataGenerator dataGenerator = new DataGenerator();

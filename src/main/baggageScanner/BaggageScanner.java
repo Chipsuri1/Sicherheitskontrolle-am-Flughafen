@@ -4,6 +4,7 @@ import main.FederalPoliceOffice;
 import main.Record;
 import main.ScanResult;
 import main.Status;
+import main.configuration.Configuration;
 
 import java.util.Iterator;
 
@@ -38,12 +39,7 @@ public class BaggageScanner {
 
         Iterator iterator = scanner.getTrays().iterator();
 
-//        while(iterator.hasNext()){
-//            doNextStepAfterScanning((Tray) iterator.next();
-//            for (Object o : ) {
-//
-//            }
-//        }
+
         while (scanner.getTrays().size() != 0) {
             doNextStepAfterScanning(scanner.getTrays().poll());
         }
@@ -61,6 +57,7 @@ public class BaggageScanner {
             manualPostControl.getInspectorI3().doManualPostControl(this, tray);
 
         } else {
+            if(Configuration.instance.commentsOn)
             System.out.println("Passenger "+ tray.getHandBaggage().getPassenger().getName()+ " is crispy clean!");
             //Gib Passagier Handbaggage zurück über Track 02
             track2.putTray(tray);
