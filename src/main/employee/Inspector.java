@@ -49,13 +49,15 @@ public class Inspector extends Employee {
     }
 
     public void doManualPostControl(BaggageScanner baggageScanner, Tray tray) {
-
+        record = tray.getRecord();
         //Knife
         if (record.getResult().getScanResult().equals(ScanResult.knife)) {
             baggageScanner.getOperatingStation().getInspectorI2().tellOtherInspector(baggageScanner.getManualPostControl().getInspectorI3(), record);
             passengerInPresence = tray.getHandBaggage().getPassenger();
-            baggageScanner.getManualPostControl().getInspectorI3().openBaggageGetKnifeAndThrowAway(tray.getHandBaggage().getPassenger());
+            baggageScanner.getManualPostControl().getInspectorI3().openBaggageGetKnifeAndThrowAway(tray.getHandBaggage());
+
             baggageScanner.getManualPostControl().getInspectorI3().putTrayToBelt(tray, baggageScanner);
+
             baggageScanner.scanHandBaggage();
             passengerInPresence = null;
 
@@ -64,7 +66,8 @@ public class Inspector extends Employee {
         else if (record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)) {
             baggageScanner.getOperatingStation().getInspectorI2().setAlarm(baggageScanner);
             baggageScanner.getFederalPoliceOffice().getFederalPoliceOfficerO1().arrest(tray.getHandBaggage().getPassenger());
-            baggageScanner.getFederalPoliceOffice().reqestOfficer1AndOfficer2(baggageScanner);
+            officer1 = baggageScanner.getFederalPoliceOffice().reqestOfficer1(baggageScanner);
+            officer2 = baggageScanner.getFederalPoliceOffice().reqestOfficer2(baggageScanner);
             if (record.getResult().getScanResult().equals(ScanResult.explosive)) {
                 getOfficer2().workWithRobot();
             } else {
@@ -73,10 +76,13 @@ public class Inspector extends Employee {
 
                     passengerInPresence = tray.getHandBaggage().getPassenger();
                     supervisorInPresence = baggageScanner.getSupervision().getSupervisor();
+                    setOfficer1(baggageScanner.getFederalPoliceOffice().getFederalPoliceOfficerO1());
                     getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
-                    for (HandBaggage handBaggage : tray.getHandBaggage().getPassenger().getHandBaggage()) {
+                    //TODO ich glaube hier gibt er dem officer nicht alle Handbaggages
+                    HandBaggage handBaggage = tray.getHandBaggage();
+//                    for (HandBaggage handBaggage : tray.getHandBaggage()) {
                         getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
-                    }
+//                    }
                     getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().setPassenger(passengerInPresence);
                     supervisorInPresence.unlock(baggageScanner);
                 }
@@ -113,9 +119,7 @@ public class Inspector extends Employee {
         this.record = record;
     }
 
-    public void openBaggageGetKnifeAndThrowAway(Passenger passenger) {
-        for (HandBaggage handBaggage : passenger.getHandBaggage()
-             ) {
+    public void openBaggageGetKnifeAndThrowAway(HandBaggage handBaggage) {
             for (Layer layer : handBaggage.getLayers()
                  ) {
                 for (int i = 0; i < layer.getContent().length; i++) {
@@ -124,7 +128,6 @@ public class Inspector extends Employee {
                         layer.getContent()[i] = 'a';
                     }
                 }
-            }
         }
     }
 

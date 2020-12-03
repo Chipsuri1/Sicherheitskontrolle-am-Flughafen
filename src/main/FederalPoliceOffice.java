@@ -34,9 +34,12 @@ public class FederalPoliceOffice {
         return federalPoliceOfficerO3;
     }
 
-    public void reqestOfficer1AndOfficer2(BaggageScanner baggageScanner) {
-        baggageScanner.getOperatingStation().getInspectorI2().setOfficer1(federalPoliceOfficerO1);
-        baggageScanner.getOperatingStation().getInspectorI2().setOfficer2(federalPoliceOfficerO2);
+    public FederalPoliceOfficer reqestOfficer1(BaggageScanner baggageScanner) {
+        return federalPoliceOfficerO1;
+    }
+
+    public FederalPoliceOfficer reqestOfficer2(BaggageScanner baggageScanner) {
+        return federalPoliceOfficerO2;
     }
 
     public List<Robot> getRobots() {

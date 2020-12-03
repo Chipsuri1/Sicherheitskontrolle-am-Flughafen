@@ -11,6 +11,7 @@ import main.passenger.Layer;
 import main.passenger.Passenger;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static main.Type.external;
@@ -29,6 +30,7 @@ public class FederalPoliceOfficer extends Employee {
         this.federalPoliceOffice = federalPoliceOffice;
         getIdCard().setType(external);
         getIdCard().setMagnetStripe(new MagnetStripe(ProfilType.O, getIdCard().getSecretKey()));
+        baggagesOfArrested = new ArrayList<>();
     }
 
 

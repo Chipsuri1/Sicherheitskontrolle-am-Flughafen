@@ -53,6 +53,7 @@ public class SecurityControl {
             Arrays.stream(handBaggage).forEach(handBaggage1 -> handBaggage1.setPassenger(passenger));
             passengerList.offer(passenger);
         }
+        System.out.println();
     }
 
 }
