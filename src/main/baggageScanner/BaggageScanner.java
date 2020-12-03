@@ -51,11 +51,13 @@ public class BaggageScanner {
         Record record = tray.getRecord();
 
         if (record.getResult().equals(ScanResult.knife) || record.getResult().equals(ScanResult.weapon) || record.getResult().equals(ScanResult.explosive)) {
+            System.out.println("Passenger "+ tray.getHandBaggage().getPassenger().getName()+ ": Mama, i´m a criminal!!");
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             manualPostControl.getInspectorI3().putOnTrack1(this, tray);
             manualPostControl.getInspectorI3().doManualPostControl(this, tray);
 
         } else {
+            System.out.println("Passenger "+ tray.getHandBaggage().getPassenger().getName()+ " is crispy clean!");
             //Gib Passagier Handbaggage zurück über Track 02
             track2.putTray(tray);
         }
