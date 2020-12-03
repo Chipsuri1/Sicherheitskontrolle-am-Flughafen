@@ -22,9 +22,7 @@ public class Scanner {
     public void startScanning(){
         baggageScanner.setStatus(Status.inUse);
 
-        int size = trays.size();
-        for(int i = 0; i < size; i++){
-            Tray tray = trays.peek();
+        for(Tray tray : trays){
 
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -37,16 +35,18 @@ public class Scanner {
             List<String> patterns = new ArrayList<>(Arrays.asList("K", "W", "E"));
 
             String position = null;
+            Record record = null;
 
             for(String pattern : patterns) {
                 switch (Configuration.instance.searchType) {
                     case BoyerMoore:
                         position = Configuration.instance.boyerMoore.search(stringBuilder.toString(), pattern);
+                        break;
                     case KnuthMorrisPratt:
                         position = Configuration.instance.knuthMorrisPratt.search(stringBuilder.toString(), pattern);
+                        break;
                 }
 
-                Record record = null;
 
                 if(position.equals("clean")){
                     record = new Record(new Result(ScanResult.clean, position));
@@ -58,20 +58,24 @@ public class Scanner {
                         case "K":
                             scanResult = ScanResult.knife;
                             result = "knife";
+                            break;
                         case "W":
                             scanResult = ScanResult.weapon;
                             result = "weapon - glock7";
+                            break;
                         case "E":
                             scanResult = ScanResult.explosive;
                             result = "explosive";
                     }
                     record = new Record(new Result(scanResult, "prohibited item | " + result + "detected at position " + position));
+                    break;
                 }
 
-                records.add(record);
-                tray.setRecord(record);
 
             }
+
+            records.add(record);
+            tray.setRecord(record);
         }
 
         baggageScanner.setStatus(Status.activated);
