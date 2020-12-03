@@ -36,14 +36,17 @@ public class BaggageScanner {
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonLeft());
         operatingStation.getInspectorI2().pushButton(operatingStation.getButtonRectangle());
 
-        Iterator iterator = scanner.getTrays().iterator();
+//        Iterator iterator = scanner.getTrays().iterator();
 
-        while(iterator.hasNext()){
-            doNextStepAfterScanning((Tray) iterator.next());
-        }
-//        while (scanner.getTrays().size() != 0) {
-//            doNextStepAfterScanning(scanner.getTrays().poll());
+//        while(iterator.hasNext()){
+//            doNextStepAfterScanning((Tray) iterator.next();
+//            for (Object o : ) {
+//
+//            }
 //        }
+        while (scanner.getTrays().size() != 0) {
+            doNextStepAfterScanning(scanner.getTrays().poll());
+        }
 
     }
 
