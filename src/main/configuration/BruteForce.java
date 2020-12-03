@@ -3,7 +3,13 @@ package main.configuration;
 public class BruteForce implements IStringMatching {
 
     public String search(String text, String pattern){
-        return null;
+        int position = searchForPattern(text, pattern);
+
+        if (position == -1) {
+            return "clean";
+        } else {
+            return String.valueOf(position);
+        }
     }
 
 

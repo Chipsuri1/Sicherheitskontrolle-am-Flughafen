@@ -44,7 +44,7 @@ public class Inspector extends Employee {
         }
     }
 
-    public void pushButton(Button button){
+    public void push(Button button){
         button.buttonAction();
     }
 
@@ -79,6 +79,7 @@ public class Inspector extends Employee {
                     setOfficer1(baggageScanner.getFederalPoliceOffice().getFederalPoliceOfficerO1());
                     getOfficer1().openHandBaggageGetWeaponAndGiveToOfficer03(tray);
                     //TODO ich glaube hier gibt er dem officer nicht alle Handbaggages
+                    //TODO i dont think so
                     HandBaggage handBaggage = tray.getHandBaggage();
 //                    for (HandBaggage handBaggage : tray.getHandBaggage()) {
                         getOfficer1().getFederalPoliceOffice().getFederalPoliceOfficerO3().getBaggagesOfArrested().add(handBaggage);
@@ -87,7 +88,9 @@ public class Inspector extends Employee {
                     supervisorInPresence.unlock(baggageScanner);
                 }
                 else if (record.getResult().getScanResult().equals(ScanResult.explosive)){
-
+                    TestStripe testStripe = new TestStripe();
+                    swipeTestStripe(testStripe);
+                    putTestStripeIntoExplosiveTraceDetector(baggageScanner.getManualPostControl().getExplosiveTraceDetector(), testStripe);
                 }
             }
         } else {
@@ -97,15 +100,15 @@ public class Inspector extends Employee {
 
     }
 
-    private void swipeTestStripe(){
-        TestStripe testStripe = new TestStripe();
+    private void swipeTestStripe(TestStripe testStripe){
         testStripe.setExp();
-//        putTestStripeIntoExplosiveTraceDetector();
     }
 
-    private void putTestStripeIntoExplosiveTraceDetector(TestStripe testStripe){
-
+    private void putTestStripeIntoExplosiveTraceDetector(ExplosiveTraceDetector explosiveTraceDetector, TestStripe testStripe){
+        explosiveTraceDetector.checkTestStripeForExplosive(testStripe);
     }
+
+
 
     private void setAlarm(BaggageScanner baggageScanner) {
         baggageScanner.setStatus(Status.locked);
