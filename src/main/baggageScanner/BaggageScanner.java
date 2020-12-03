@@ -56,7 +56,7 @@ public class BaggageScanner {
     private void doNextStepAfterScanning(Tray tray) {
         Record record = tray.getRecord();
 
-        if (record.getResult().equals(ScanResult.knife) || record.getResult().equals(ScanResult.weapon) || record.getResult().equals(ScanResult.explosive)) {
+        if (record.getResult().getScanResult().equals(ScanResult.knife) || record.getResult().getScanResult().equals(ScanResult.weapon) || record.getResult().getScanResult().equals(ScanResult.explosive)) {
             //manuelle Nachkontrolle durch Inspektor I3 auf Track 01
             manualPostControl.getInspectorI3().putOnTrack1(this, tray);
             manualPostControl.getInspectorI3().doManualPostControl(this, tray);

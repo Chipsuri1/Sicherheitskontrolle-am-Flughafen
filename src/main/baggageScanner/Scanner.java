@@ -67,7 +67,9 @@ public class Scanner {
                             scanResult = ScanResult.explosive;
                             result = "explosive";
                     }
-                    record = new Record(new Result(scanResult, "prohibited item | " + result + "detected at position " + position));
+                    String string = "prohibited item | " + result + " detected at position " + position;
+                    System.out.println(string);
+                    record = new Record(new Result(scanResult, string));
                     break;
                 }
 
